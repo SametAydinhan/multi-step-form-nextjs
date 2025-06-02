@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Multi-Step Form (Next.js)
 
-## Getting Started
+This project is a multi-step onboarding form application built with [Next.js](https://nextjs.org) and the modern React ecosystem. It is designed to simplify the onboarding process for new users.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Multi-step user registration/onboarding form
+- Form validation using [zod](https://zod.dev/) and [react-hook-form](https://react-hook-form.com/)
+- Stylish and accessible UI with [Chakra UI](https://chakra-ui.com/)
+- Next.js App Router architecture
+- Easily extendable and customizable structure
+
+## Technologies and Libraries Used
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [React](https://react.dev/)
+- [Chakra UI](https://chakra-ui.com/) (component library)
+- [react-hook-form](https://react-hook-form.com/) (form management)
+- [zod](https://zod.dev/) (schema-based validation)
+- [@hookform/resolvers](https://react-hook-form.com/docs/useform/#resolver) (zod integration)
+- [TypeScript](https://www.typescriptlang.org/) (type safety)
+- [Geist Font](https://vercel.com/font) (modern font)
+
+## Project Structure
+
+```
+src/
+  app/
+    components/
+    layout.tsx
+    page.tsx
+  personel-info.tsx
+  work-info.tsx
+  more-details.tsx
+  onboarding-form.tsx
+public/
+  ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `src/personel-info.tsx`, `src/work-info.tsx`, `src/more-details.tsx`: Components representing each step of the form.
+- `src/onboarding-form.tsx`: Main component for the multi-step form.
+- `src/app/layout.tsx`: Application-wide layout and providers.
+- `public/`: Static files (icons, images, etc.)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation and Running
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+After cloning the project, install dependencies and start the development server:
 
-## Learn More
+```bash
+npm install
+npm run dev
+# or
+yarn install
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Start the onboarding form on the home page.
+2. The user is asked for personal information, work information, and additional details in sequence.
+3. Form validation is performed at each step, and missing or incorrect fields are shown to the user.
+4. On the final step, all information is collected and can be processed (e.g., sent to an API).
 
-## Deploy on Vercel
+## Contribution and License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the [MIT License](LICENSE). Feel free to contribute by submitting a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+For more information, check out the [Next.js documentation](https://nextjs.org/docs).
