@@ -3,9 +3,10 @@ import React from "react";
 import {
   Button,
   Field,
-  Input,
+  HStack,
   NativeSelect,
   Stack,
+  Steps,
   Textarea,
 } from "@chakra-ui/react";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -49,7 +50,10 @@ const MoreDetails = (props: MoreDetailsFormProps) => {
         <Field.Root invalid={!!errors.learningStyle}>
           <Field.Label>Learning Style</Field.Label>
           <NativeSelect.Root size='sm' width='240px'>
-            <NativeSelect.Field placeholder='Select option' {...register("learningStyle")}>
+            <NativeSelect.Field
+              placeholder='Select option'
+              {...register("learningStyle")}
+            >
               <option value='videos'>Videos Courses</option>
               <option value='reading'>Reading Articles</option>
               <option value='hands-on'>Hands-on Projects</option>
@@ -59,8 +63,14 @@ const MoreDetails = (props: MoreDetailsFormProps) => {
           </NativeSelect.Root>
           <Field.ErrorText>{errors.learningStyle?.message}</Field.ErrorText>
         </Field.Root>
-        <Button>Previous</Button>
-        <Button type='submit'>Next</Button>
+        <HStack gap='4'>
+          <Steps.PrevTrigger asChild flex='1'>
+            <Button variant='outline'>Previous</Button>
+          </Steps.PrevTrigger>
+          <Button type='submit' flex='1'>
+            Submit
+          </Button>
+        </HStack>
       </Stack>
     </form>
   );

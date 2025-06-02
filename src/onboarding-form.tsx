@@ -14,6 +14,13 @@ const steps = [
 
 export function OnboardingForm() {
   const [step, setStep] = useState(0);
+
+    const handleNext = () => {
+        if (step < steps.length - 1) {
+        setStep(step + 1);
+        }
+    };
+
   return (
     <Box padding={5} maxWidth='560px' mx='auto'>
       <Heading mb={4}>Onboarding Form</Heading>
@@ -30,21 +37,21 @@ export function OnboardingForm() {
 
         <Steps.Content index={0}>
           <PersonelInfo onSubmit={(data) => {
-            setStep(step + 1);
+            handleNext();
             console.log("Personal Info Submitted:", data);
           }}/>
         </Steps.Content>
 
         <Steps.Content index={1}>
           <WorkInfo onSubmit={(data) => {
-            setStep(step + 1);
+            handleNext();
             console.log("Work Info Submitted:", data);
           }}/>
         </Steps.Content>
 
         <Steps.Content index={2}>
           <MoreDetails onSubmit={(data) => {
-            setStep(step + 1);
+            handleNext();
             console.log("More Details Submitted:", data);
           }}/>
         </Steps.Content>

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Button, Field, Input, Stack } from "@chakra-ui/react";
+import { Button, Field, HStack, Input, Stack, Steps } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -10,16 +10,22 @@ interface FormValues {
   yearsOfExperience: string;
 }
 const formSchema = z.object({
-    jobTitle: z.string().min(3, { message: "Please enter your job title" }),
-    companyName: z.string().min(3, { message: "Please enter your company name" }),
-    yearsOfExperience: z.string().min(1, { message: "Please enter your years of experience" }),
-})
+  jobTitle: z.string().min(3, { message: "Please enter your job title" }),
+  companyName: z.string().min(3, { message: "Please enter your company name" }),
+  yearsOfExperience: z
+    .string()
+    .min(1, { message: "Please enter your years of experience" }),
+});
 
 interface WorkInfoFormProps {
   onSubmit?: (data: FormValues) => void;
 }
 const WorkInfo = (props: WorkInfoFormProps) => {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
   const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -43,8 +49,14 @@ const WorkInfo = (props: WorkInfoFormProps) => {
           <Input {...register("yearsOfExperience")} />
           <Field.ErrorText>{errors.yearsOfExperience?.message}</Field.ErrorText>
         </Field.Root>
-        <Button>Previous</Button>
-        <Button type='submit'>Next</Button>
+        <HStack gap='4'>
+          <Steps.PrevTrigger asChild flex='1'>
+            <Button variant='outline'>Previous</Button>
+          </Steps.PrevTrigger>
+          <Button type='submit' flex='1'>
+            Next
+          </Button>
+        </HStack>
       </Stack>
     </form>
   );
