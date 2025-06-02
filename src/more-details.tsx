@@ -23,7 +23,11 @@ const formSchema = z.object({
     .min(1, { message: "Please select a learning style" }),
 });
 
-const MoreDetails = () => {
+interface MoreDetailsFormProps {
+  onSubmit?: (data: FormValues) => void;
+}
+
+const MoreDetails = (props: MoreDetailsFormProps) => {
   const {
     register,
     handleSubmit,
@@ -31,7 +35,9 @@ const MoreDetails = () => {
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    props.onSubmit?.(data);
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack gap='4'>
@@ -43,7 +49,7 @@ const MoreDetails = () => {
         <Field.Root invalid={!!errors.learningStyle}>
           <Field.Label>Learning Style</Field.Label>
           <NativeSelect.Root size='sm' width='240px'>
-            <NativeSelect.Field placeholder='Select option'>
+            <NativeSelect.Field placeholder='Select option' {...register("learningStyle")}>
               <option value='videos'>Videos Courses</option>
               <option value='reading'>Reading Articles</option>
               <option value='hands-on'>Hands-on Projects</option>

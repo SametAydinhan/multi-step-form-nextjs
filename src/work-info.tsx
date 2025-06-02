@@ -14,15 +14,17 @@ const formSchema = z.object({
     companyName: z.string().min(3, { message: "Please enter your company name" }),
     yearsOfExperience: z.string().min(1, { message: "Please enter your years of experience" }),
 })
-interface WorkInfoProps {
-  onSubmit: SubmitHandler<FormValues>;
-}
 
-const WorkInfo = () => {
+interface WorkInfoFormProps {
+  onSubmit?: (data: FormValues) => void;
+}
+const WorkInfo = (props: WorkInfoFormProps) => {
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    props.onSubmit?.(data);
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack gap='4'>

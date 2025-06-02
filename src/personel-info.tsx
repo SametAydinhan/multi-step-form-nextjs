@@ -17,11 +17,16 @@ const formSchema = z.object({
   email: z.string().email(),
   phone: z.string().min(10, { message: "Please enter a valid phone number" }),
 });
-const PersonelInfo = () => {
+interface PersonelInfoProps {
+  onSubmit?: (data: FormValues) => void;
+}
+const PersonelInfo = (props: PersonelInfoProps) => {
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    props.onSubmit?.(data);
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack gap='4'>
