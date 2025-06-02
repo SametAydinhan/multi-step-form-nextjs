@@ -63,6 +63,16 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 3. Form validation is performed at each step, and missing or incorrect fields are shown to the user.
 4. On the final step, all information is collected and can be processed (e.g., sent to an API).
 
+## Screenshots
+
+Here are some screenshots of the application:
+![image](https://github.com/user-attachments/assets/16388bf3-88f8-48ee-9496-7be12128d1ac)
+![image](https://github.com/user-attachments/assets/1b508e2c-60ca-4dff-9514-ec0e863b7ae1)
+![image](https://github.com/user-attachments/assets/efe0408e-2621-40b6-a66a-3eaaf616886e)
+![image](https://github.com/user-attachments/assets/20344432-b257-495f-b974-331efb730bb1)
+
+
+
 ## Contribution and License
 
 This project is licensed under the [MIT License](LICENSE). Feel free to contribute by submitting a pull request.
